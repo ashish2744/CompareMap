@@ -6,9 +6,9 @@ public class TestOpcoAndNationalId {
     private Map<String, List<String>> ogmMap = new HashMap<>();
 
     private void setUomMap(){
-        uomMap.put("AAFL", Arrays.asList("001","002","003","004"));
-        uomMap.put("ABFH",Arrays.asList("001","003","004"));
-        uomMap.put("AITR",Arrays.asList("001","003"));
+        uomMap.put("AAFL", Arrays.asList("002","003","004","001"));
+        uomMap.put("ABFH",Arrays.asList("003","001","004","002"));
+        uomMap.put("AITR",Arrays.asList("001","002","003"));
         uomMap.put("AISH",Arrays.asList("001","002","004"));
     }
 
@@ -23,11 +23,11 @@ public class TestOpcoAndNationalId {
         setOgmMap();
     }
 
-    public void testMethod(){
+    public void compareMap(){
         Set<String> uomKeys = uomMap.keySet();
         Set<String> ogmKeys = ogmMap.keySet();
-        List<String> opcoListToBeAdded = new ArrayList<>();
         for(String uomKey : uomKeys) {
+            List<String> opcoListToBeAdded = new ArrayList<>();
             Map<String, List<String>> resultMap = new HashMap<>();
             if(ogmKeys.contains(uomKey)){
                 List<String> uomOpcoList = uomMap.get(uomKey);
