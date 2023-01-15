@@ -4,7 +4,6 @@ public class TestOpcoAndNationalId {
 
     private Map<String, List<String>> uomMap = new HashMap<>();
     private Map<String, List<String>> ogmMap = new HashMap<>();
-    private Map<String, List<String>> resultMap = new HashMap<>();
 
     private void setUomMap(){
         uomMap.put("AAFL",Arrays.asList("001","002","003","004"));
@@ -26,18 +25,21 @@ public class TestOpcoAndNationalId {
         Set<String> ogmKeys = ogmMap.keySet();
         List<String> opcoListToBeAdded = new ArrayList<>();
         for(String uomKey : uomKeys) {
-           if(ogmKeys.contains(uomKey)){
-               List<String> uomOpcoList = uomMap.get(uomKey);
-               List<String> ogmOpcoList = ogmMap.get(uomKey);
-               uomOpcoList.stream().forEach(opco -> {
-                   if(!ogmOpcoList.contains(opco)){
-                       opcoListToBeAdded.add(opco);
-                   }
-                   resultMap.put(uomKey,opcoListToBeAdded);
-               });
-           }else {
-               resultMap.put(uomKey, uomMap.get(uomKey));
-           }
+            Map<String, List<String>> resultMap = new HashMap<>();
+            if(ogmKeys.contains(uomKey)){
+                List<String> uomOpcoList = uomMap.get(uomKey);
+                List<String> ogmOpcoList = ogmMap.get(uomKey);
+                uomOpcoList.stream().forEach(opco -> {
+                    if(!ogmOpcoList.contains(opco)){
+                        opcoListToBeAdded.add(opco);
+                    }
+                });
+                resultMap.put(uomKey,opcoListToBeAdded);
+                System.out.println("Result map if: "+resultMap);
+            }else {
+                resultMap.put(uomKey, uomMap.get(uomKey));
+                System.out.println("Result map else: "+resultMap);
+            }
         }
     }
 
