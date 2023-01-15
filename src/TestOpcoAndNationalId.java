@@ -6,7 +6,7 @@ public class TestOpcoAndNationalId {
     private Map<String, List<String>> ogmMap = new HashMap<>();
 
     private void setUomMap(){
-        uomMap.put("AAFL",Arrays.asList("001","002","003","004"));
+        uomMap.put("AAFL", Arrays.asList("001","002","003","004"));
         uomMap.put("ABFH",Arrays.asList("001","003","004"));
         uomMap.put("AITR",Arrays.asList("001","003"));
         uomMap.put("AISH",Arrays.asList("001","002","004"));
@@ -18,9 +18,12 @@ public class TestOpcoAndNationalId {
         ogmMap.put("AITR",Arrays.asList("001","003"));
     }
 
-    public void testMethod(){
+    public void dataProvider(){
         setUomMap();
         setOgmMap();
+    }
+
+    public void testMethod(){
         Set<String> uomKeys = uomMap.keySet();
         Set<String> ogmKeys = ogmMap.keySet();
         List<String> opcoListToBeAdded = new ArrayList<>();
