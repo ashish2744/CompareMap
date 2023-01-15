@@ -36,7 +36,7 @@ public class TestOpcoAndNationalId {
                    resultMap.put(uomKey,opcoListToBeAdded);
                });
            }else {
-               System.out.println(uomKey+ " is not present");
+               resultMap.put(uomKey, uomMap.get(uomKey));
            }
         }
     }
